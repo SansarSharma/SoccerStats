@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Stats - Players</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to CSS if available -->
+</head>
+<body>
+<h1>Players List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Goals</th>
+        <th>Assists</th>
+        <th>Trophies Won</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Thymeleaf will render rows here -->
+    <tr th:each="player : ${players}">
+        <td th:text="${player.name}"></td>
+        <td th:text="${player.goals}"></td>
+        <td th:text="${player.assists}"></td>
+        <td th:text="${player.trophiesWon}"></td>
+    </tr>
+    </tbody>
+</table>
+<p><a href="/">Back to Home</a></p>
+</body>
+</html>
