@@ -1,13 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soccer Stats - Home</title>
-    <link rel="stylesheet" href="/styles.css"> <!-- Link to CSS if available -->
+    <!-- Metadata Section -->
+    <meta charset="UTF-8"> <!-- Sets the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures proper scaling on mobile devices -->
+    <title>Soccer Stats - Home</title> <!-- Title of the web page displayed in the browser tab -->
+
+    <!-- Inline CSS Styles -->
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif; /* Sets the font style for the body */
+            margin: 0; /* Removes default margin */
+            padding: 0; /* Removes default padding */
+            background: linear-gradient(135deg, #1e3c72, #2a5298); /* Creates a gradient background */
+            color: #ffffff; /* Sets the text color to white */
+            display: flex; /* Enables Flexbox layout */
+            justify-content: center; /* Centers content horizontally */
+            align-items: center; /* Centers content vertically */
+            height: 100vh; /* Sets the height to 100% of the viewport */
+        }
+
+        /* Heading styling */
+        h1 {
+            font-size: 2.5rem; /* Sets the font size for the heading */
+            margin-bottom: 20px; /* Adds space below the heading */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow to the text */
+        }
+
+        /* Paragraph styling */
+        p {
+            font-size: 1.2rem; /* Sets the font size for paragraph text */
+        }
+
+        /* Link styling */
+        a {
+            color: #f1c40f; /* Sets the text color for the link */
+            text-decoration: none; /* Removes underline from the link */
+            font-weight: bold; /* Makes the text bold */
+            background: #34495e; /* Sets the background color for the link */
+            padding: 10px 20px; /* Adds padding inside the link */
+            border-radius: 5px; /* Rounds the corners of the link */
+            transition: background 0.3s ease, transform 0.2s ease; /* Adds smooth transitions for hover effects */
+        }
+
+        /* Link hover effects */
+        a:hover {
+            background: #2ecc71; /* Changes the background color on hover */
+            transform: scale(1.1); /* Slightly enlarges the link on hover */
+        }
+
+        /* Container styling */
+        .container {
+            text-align: center; /* Centers text within the container */
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome to Soccer Stats</h1>
-<p><a href="/players">View Players</a></p>
+<!-- Main Content -->
+<div class="container">
+    <h1>Welcome to Soccer Stats</h1> <!-- Main heading -->
+    <p>
+        <a href="/players">View Players</a> <!-- Link to the players page -->
+    </p>
+</div>
 </body>
 </html>

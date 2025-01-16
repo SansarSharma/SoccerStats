@@ -1,32 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soccer Stats - Players</title>
-    <link rel="stylesheet" href="/styles.css"> <!-- Link to CSS if available -->
+    <!-- Metadata Section -->
+    <meta charset="UTF-8"> <!-- Sets character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page responsive -->
+    <title>Soccer Stats - Players</title> <!-- Title displayed in the browser tab -->
+
+    <!-- Inline CSS for Styling -->
+    <style>
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif; /* Sets font family */
+            margin: 0; /* Removes default margin */
+            padding: 20px; /* Adds padding around the content */
+            background: #f3f4f6; /* Light gray background */
+            color: #333; /* Text color */
+        }
+
+        /* Header styling */
+        h1 {
+            text-align: center; /* Centers the header text */
+            color: #2c3e50; /* Darker gray-blue color */
+            margin-bottom: 20px; /* Space below the header */
+        }
+
+        /* Container styling */
+        .container {
+            width: 100%; /* Container spans the full width */
+            padding: 0 20px; /* Adds horizontal padding */
+            margin: 0; /* Removes default margin */
+        }
+
+        /* Table styling */
+        table {
+            width: 100%; /* Table spans the full width */
+            border-collapse: collapse; /* Removes gaps between borders */
+            margin: 20px 0; /* Space above and below the table */
+            background: #fff; /* White background for table */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow effect */
+        }
+
+        /* Table cell styling */
+        th, td {
+            text-align: left; /* Aligns text to the left */
+            padding: 10px 15px; /* Adds padding inside cells */
+            border: 1px solid #ddd; /* Light border around cells */
+        }
+
+        /* Table header styling */
+        th {
+            background-color: #34495e; /* Dark blue background for headers */
+            color: #fff; /* White text color for headers */
+        }
+
+        /* Alternating row colors */
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Light gray background for even rows */
+        }
+
+        /* Row hover effect */
+        tr:hover {
+            background-color: #f1c40f; /* Yellow background on hover */
+            color: #000; /* Black text on hover */
+        }
+
+        /* Paragraph styling */
+        p {
+            text-align: center; /* Centers the text */
+            margin-top: 20px; /* Adds space above the paragraph */
+        }
+    </style>
 </head>
 <body>
-<h1>Players List</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Goals</th>
-        <th>Assists</th>
-        <th>Trophies Won</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Thymeleaf will render rows here -->
-    <tr th:each="player : ${players}">
-        <td th:text="${player.name}"></td>
-        <td th:text="${player.goals}"></td>
-        <td th:text="${player.assists}"></td>
-        <td th:text="${player.trophiesWon}"></td>
-    </tr>
-    </tbody>
-</table>
-<p><a href="/">Back to Home</a></p>
+<!-- Main Content -->
+<div class="container">
+    <h1>Players List</h1> <!-- Page title -->
+
+    <!-- Players Table -->
+    <table>
+        <thead>
+        <tr>
+            <!-- Table Headers -->
+            <th>Name</th>
+            <th>Nationality</th>
+            <th>Clubs</th>
+            <th>Goals</th>
+            <th>Assists</th>
+            <th>Trophies Won</th>
+            <th>Individual Trophies</th>
+            <th>Premier League Titles</th>
+            <th>La Liga Titles</th>
+            <th>Serie A Titles</th>
+            <th>Bundesliga Titles</th>
+            <th>Ligue 1 Titles</th>
+            <th>Eredivisie Titles</th>
+            <th>Supporters Shield Titles</th>
+            <th>MLS Cup Titles</th>
+            <th>FA Cups</th>
+            <th>Copa Del Rey</th>
+            <th>Coppa Italia</th>
+            <th>DFB Pokal</th>
+            <th>Coupe De France</th>
+            <th>KNVB Cup</th>
+            <th>EFL Cup</th>
+            <th>Coupe De La Ligue</th>
+            <th>Community Shields</th>
+            <th>Supercopa De Espana</th>
+            <th>Supercoppa Italiana</th>
+            <th>DFB Supercup</th>
+            <th>Trophee Des Champions</th>
+            <th>Friendly Cups</th>
+            <th>Club World Cups</th>
+            <th>World Cups</th>
+            <th>Euros</th>
+            <th>Finalissima</th>
+            <th>Copa America</th>
+            <th>UEFA Nations League</th>
+            <th>Gold Cup</th>
+            <th>U17 World Cup</th>
+            <th>U20 World Cup</th>
+            <th>UEFA Champions League Titles</th>
+            <th>UEFA Europa League Titles</th>
+            <th>UEFA Conference League Titles</th>
+            <th>UEFA Super Cup Titles</th>
+            <th>Leagues Cup Titles</th>
+            <th>Ballon D'ors</th>
+            <th>FIFA The Best Awards</th>
+            <th>UEFA Best Player in Europe</th>
+            <th>Golden Boots</th>
+            <th>Puskas Awards</th>
+            <th>Top Goal Scorers</th>
+            <th>Player of the Month</th>
+            <th>Player of the Week</th>
+            <th>League MVPs</th>
+            <th>Olympic Medals</th>
+            <th>Total League Titles</th>
+            <th>Total Domestic Cups</th>
+            <th>Total Friendly Cups</th>
+            <th>Total International Trophies</th>
+            <th>Total UEFA Continental Trophies</th>
+            <th>Total Continental Trophies</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through players and populate rows -->
+        <tr th:each="player : ${players}">
+            <td th:text="${player.name}"></td>
+            <td th:text="${player.nationality}"></td>
+            <td th:text="${#lists.isEmpty(player.clubs) ? 'No club available' : player.clubs[0]}"></td>
+            <td th:text="${player.goals}"></td>
+            <td th:text="${player.assists}"></td>
+            <td th:text="${player.trophiesWon}"></td>
+            <td th:text="${player.totalIndividualTrophies}"></td>
+            <td th:text="${player.premierLeagueTitles}"></td>
+            <td th:text="${player.laLigaTitles}"></td>
+            <td th:text="${player.serieATitles}"></td>
+            <td th:text="${player.bundesligaTitles}"></td>
+            <td th:text="${player.ligue1Titles}"></td>
+            <td th:text="${player.eredivisieTitles}"></td>
+            <td th:text="${player.supportersShieldTitles}"></td>
+            <td th:text="${player.mlsCupTitles}"></td>
+            <td th:text="${player.faCups}"></td>
+            <td th:text="${player.copaDelRey}"></td>
+            <td th:text="${player.coppaItalia}"></td>
+            <td th:text="${player.dfbPokal}"></td>
+            <td th:text="${player.coupeDeFrance}"></td>
+            <td th:text="${player.knvbCup}"></td>
+            <td th:text="${player.eflCup}"></td>
+            <td th:text="${player.coupeDeLaLigue}"></td>
+            <td th:text="${player.communityShields}"></td>
+            <td th:text="${player.supercopaDeEspana}"></td>
+            <td th:text="${player.supercoppaItaliana}"></td>
+            <td th:text="${player.dfbSupercup}"></td>
+            <td th:text="${player.tropheeDesChampions}"></td>
+            <td th:text="${player.friendlyCups}"></td>
+            <td th:text="${player.clubWorldCups}"></td>
+            <td th:text="${player.worldCups}"></td>
+            <td th:text="${player.euros}"></td>
+            <td th:text="${player.finalissima}"></td>
+            <td th:text="${player.copaAmerica}"></td>
+            <td th:text="${player.uefaNationsLeague}"></td>
+            <td th:text="${player.goldCup}"></td>
+            <td th:text="${player.u17WorldCup}"></td>
+            <td th:text="${player.u20WorldCup}"></td>
+            <td th:text="${player.uclTitles}"></td>
+            <td th:text="${player.uelTitles}"></td>
+            <td th:text="${player.eclTitles}"></td>
+            <td th:text="${player.uefaSuperCupTitles}"></td>
+            <td th:text="${player.leaguesCupTitles}"></td>
+            <td th:text="${player.ballonDors}"></td>
+            <td th:text="${player.fifaTheBestAwards}"></td>
+            <td th:text="${player.uefaBestPlayerInEurope}"></td>
+            <td th:text="${player.goldenBoots}"></td>
+            <td th:text="${player.puskasAwards}"></td>
+            <td th:text="${player.topGoalScorers}"></td>
+            <td th:text="${player.playerOfTheMonth}"></td>
+            <td th:text="${player.playerOfTheWeek}"></td>
+            <td th:text="${player.leagueMVPs}"></td>
+            <td th:text="${player.olympicMedals}"></td>
+            <td th:text="${player.leagueTitlesTotal}"></td>
+            <td th:text="${player.domesticCupsTotal}"></td>
+            <td th:text="${player.friendlyCupsTotal}"></td>
+            <td th:text="${player.internationalTrophiesTotal}"></td>
+            <td th:text="${player.totalUEFAContinentalTrophies}"></td>
+            <td th:text="${player.totalContinentalTrophies}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Back to Home Link -->
+    <p><a href="/">Back to Home</a></p>
+</div>
 </body>
 </html>
